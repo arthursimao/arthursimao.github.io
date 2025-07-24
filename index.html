@@ -306,7 +306,15 @@
             
             <div class="server-ip">
                 <h3>Conecte-se agora:</h3>
-                <div class="ip-address">place-defendant.gl.joinmc.link</div>
+                <div style="margin-bottom: 1rem;">
+                    <div style="color: #8b5cf6; font-size: 1rem; margin-bottom: 0.3rem;">☕ Java Edition:</div>
+                    <div class="ip-address">place-defendant.gl.joinmc.link</div>
+                </div>
+                <div>
+                    <div style="color: #3b82f6; font-size: 1rem; margin-bottom: 0.3rem;">📱 Bedrock Edition:</div>
+                    <div class="ip-address" style="font-size: 1.2rem;">review-certification.gl.at.ply.gg</div>
+                    <div style="color: #ffffff; font-size: 1rem; margin-top: 0.3rem;">Porta: <span style="font-weight: bold;">4223</span></div>
+                </div>
             </div>
             
             <div class="game-modes">
@@ -328,7 +336,11 @@
     <footer class="footer">
         <div class="footer-content">
             <p>&copy; 2024 Rede Simão - Servidor pequeno, diversão grande!</p>
-            <p style="margin-top: 0.5rem; opacity: 0.7;">IP: place-defendant.gl.joinmc.link | Discord: <a href="https://discord.gg/zrqag86VZp" target="_blank" style="color: #8b5cf6;">discord.gg/zrqag86VZp</a></p>
+            <p style="margin-top: 0.5rem; opacity: 0.7;">
+                Java: place-defendant.gl.joinmc.link | 
+                Bedrock: review-certification.gl.at.ply.gg:4223 | 
+                Discord: <a href="https://discord.gg/zrqag86VZp" target="_blank" style="color: #8b5cf6;">discord.gg/zrqag86VZp</a>
+            </p>
         </div>
     </footer>
 
@@ -352,6 +364,25 @@
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             createParticles();
+            
+            // Add click to copy functionality to all IP addresses
+            const ipElements = document.querySelectorAll('.ip-address');
+            ipElements.forEach(function(element) {
+                element.style.cursor = 'pointer';
+                element.addEventListener('click', function() {
+                    const textToCopy = this.textContent.trim();
+                    navigator.clipboard.writeText(textToCopy).then(function() {
+                        // Visual feedback
+                        const original = element.textContent;
+                        element.textContent = 'IP Copiado!';
+                        element.style.color = '#10b981';
+                        setTimeout(() => {
+                            element.textContent = original;
+                            element.style.color = '#ffffff';
+                        }, 2000);
+                    });
+                });
+            });
         });
 
         // Header scroll effect
@@ -365,17 +396,27 @@
         });
 
         // Copy IP to clipboard function
-        document.querySelector('.ip-address').addEventListener('click', function() {
-            navigator.clipboard.writeText('place-defendant.gl.joinmc.link').then(function() {
-                // Visual feedback
-                const original = this.textContent;
-                this.textContent = 'IP Copiado!';
-                this.style.color = '#10b981';
-                setTimeout(() => {
-                    this.textContent = original;
-                    this.style.color = '#ffffff';
-                }, 2000);
-            }.bind(this));
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            
+            // Add click to copy functionality to all IP addresses
+            const ipElements = document.querySelectorAll('.ip-address');
+            ipElements.forEach(function(element) {
+                element.style.cursor = 'pointer';
+                element.addEventListener('click', function() {
+                    const textToCopy = this.textContent.trim();
+                    navigator.clipboard.writeText(textToCopy).then(function() {
+                        // Visual feedback
+                        const original = element.textContent;
+                        element.textContent = 'IP Copiado!';
+                        element.style.color = '#10b981';
+                        setTimeout(() => {
+                            element.textContent = original;
+                            element.style.color = '#ffffff';
+                        }, 2000);
+                    });
+                });
+            });
         });
     </script>
 </body>
